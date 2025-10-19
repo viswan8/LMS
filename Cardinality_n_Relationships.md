@@ -50,5 +50,3 @@ In your specific implementation:
 *   `LoggerObserver` is an **Observer**.
 
 Therefore, a `LoggerObserver` observes 0 or more instances of `InMemoryBookRepository`, `InMemoryPatronRepository`, and `LibraryLendingManager`.
-
-## Visual Representation of Key Relationships
