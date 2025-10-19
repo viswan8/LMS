@@ -40,7 +40,7 @@ public class InMemoryPatronRepository implements IPatronRepository, ILibrarySubj
     @Override
     public void addPatron(IPatron patron) {
         if (patron == null) {
-            throw new IllegalArgumentException("Cannot add a null patron.");
+            throw new IllegalArgumentException("Can not add a null patron.");
         }
         if (patrons.containsKey(patron.getPatronId())) {
             Map<String, String> details = new HashMap<>();
@@ -71,18 +71,18 @@ public class InMemoryPatronRepository implements IPatronRepository, ILibrarySubj
     @Override
     public void updatePatron(IPatron updatedPatron) {
         if (updatedPatron == null) {
-            throw new IllegalArgumentException("Cannot update with a null patron object.");
+            throw new IllegalArgumentException("Can not update with a null patron object.");
         }
         if (!patrons.containsKey(updatedPatron.getPatronId())) {
             Map<String, String> details = new HashMap<>();
             details.put("PatronID", updatedPatron.getPatronId());
             LibraryEvent errorEvent = new LibraryEvent(
                     LibraryEvent.EventType.ERROR,
-                    "Cannot update patron. No patron found with ID: " + updatedPatron.getPatronId(),
+                    "Can not update patron. No patron found with ID: " + updatedPatron.getPatronId(),
                     details
             );
             notifyObservers(errorEvent);
-            throw new IllegalArgumentException("Cannot update patron. No patron found with ID: " + updatedPatron.getPatronId());
+            throw new IllegalArgumentException("Can not update patron. No patron found with ID: " + updatedPatron.getPatronId());
         }
         patrons.put(updatedPatron.getPatronId(), updatedPatron); // Replace the old object with the updated one
         // Notify observers about the patron update

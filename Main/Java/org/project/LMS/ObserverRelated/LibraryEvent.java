@@ -24,15 +24,15 @@ public class LibraryEvent {
 
     public LibraryEvent(EventType type, String message, Map<String, String> details) {
         if (type == null) {
-            throw new IllegalArgumentException("Event type cannot be null.");
+            throw new IllegalArgumentException("Event type can not be null.");
         }
         if (message == null || message.trim().isEmpty()) {
-            throw new IllegalArgumentException("Event message cannot be null or empty.");
+            throw new IllegalArgumentException("Event message can not be null or empty.");
         }
 
         this.type = type;
         this.timestamp = LocalDateTime.now();
-        // Handle details map for Java 8: create a new HashMap if details are provided, otherwise empty map.
+        // Create a new HashMap if details are provided, otherwise empty map.
         this.details = details != null ? Collections.unmodifiableMap(new HashMap<>(details)) : Collections.emptyMap();
         this.message = message;
     }

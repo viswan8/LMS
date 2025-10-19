@@ -8,8 +8,6 @@ public class LoggerObserver implements ILibraryObserver {
 
     @Override
     public void update(LibraryEvent event) {
-        // Here you can implement more sophisticated logging (e.g., to a file, database)
-        // For now, we'll just print to console, similar to your existing "LOG" messages.
         switch (event.getType()) {
             case ERROR:
                 System.err.println("LOGGER [ERROR] " + event.toString());

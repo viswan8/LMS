@@ -14,7 +14,7 @@ public class Main {
         IBook book3 = new ConcreteBook("To Kill a Mockingbird", "Harper Lee", "978-0446310789", 1960);
 
         // Create a patron
-        IPatron patron1 = new ConcretePatron("P001", "Alice Smith", "alice.smith@example.com");
+        IPatron patron1 = new ConcretePatron("P001", "Viswanath Raj", "viswa.raj@gmail.com");
         System.out.println("Created Patron 1: " + patron1);
 
         // Test borrowing books
@@ -67,12 +67,12 @@ public class Main {
 
         // Test updating patron info
         System.out.println("\nPatron 1 contact before update: " + patron1.getContactInfo());
-        patron1.setContactInfo("alice.new@example.com");
+        patron1.setContactInfo("viswaR20@gmail.com");
         System.out.println("Patron 1 contact after update: " + patron1.getContactInfo());
 
         // Test equality
-        IPatron patron2 = new ConcretePatron("P001", "Alice Smith", "another@example.com"); // Same ID as patron1
-        IPatron patron3 = new ConcretePatron("P002", "Bob Johnson", "bob@example.com");
+        IPatron patron2 = new ConcretePatron("P001", "Viswanath Raj", "viswRaj@gmail.com"); // Same ID as patron1
+        IPatron patron3 = new ConcretePatron("P002", "Vishnu Gautham", "vishnu.goutham@gmail.com");
 
         System.out.println("\nIs Patron 1 equal to Patron 2 (same ID)? " + patron1.equals(patron2)); // Should be true
         System.out.println("Is Patron 1 equal to Patron 3? " + patron1.equals(patron3)); // Should be false

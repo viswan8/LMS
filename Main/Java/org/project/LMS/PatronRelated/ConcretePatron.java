@@ -22,18 +22,18 @@ public class ConcretePatron implements IPatron {
      *
      * @param patronId A unique identifier for the patron.
      * @param name The full name of the patron.
-     * @param contactInfo The contact information (e.g., email, phone).
+     * @param contactInfo The contact information.
      */
     public ConcretePatron(String patronId, String name, String contactInfo) {
         // Basic validation
         if (patronId == null || patronId.trim().isEmpty()) {
-            throw new IllegalArgumentException("Patron ID cannot be null or empty.");
+            throw new IllegalArgumentException("Patron ID can not be null or empty.");
         }
         if (name == null || name.trim().isEmpty()) {
-            throw new IllegalArgumentException("Patron name cannot be null or empty.");
+            throw new IllegalArgumentException("Patron name can not be null or empty.");
         }
         if (contactInfo == null || contactInfo.trim().isEmpty()) {
-            throw new IllegalArgumentException("Patron contact information cannot be null or empty.");
+            throw new IllegalArgumentException("Patron contact information can not be null or empty.");
         }
 
         this.patronId = patronId;
@@ -60,7 +60,7 @@ public class ConcretePatron implements IPatron {
     @Override
     public void setContactInfo(String contactInfo) {
         if (contactInfo == null || contactInfo.trim().isEmpty()) {
-            throw new IllegalArgumentException("Patron contact information cannot be null or empty.");
+            throw new IllegalArgumentException("Patron contact information can not be null or empty.");
         }
         this.contactInfo = contactInfo;
     }
@@ -74,7 +74,7 @@ public class ConcretePatron implements IPatron {
     @Override
     public void borrowBook(IBook book) {
         if (book == null) {
-            throw new IllegalArgumentException("Cannot borrow a null book.");
+            throw new IllegalArgumentException("Can not borrow a null book.");
         }
         if (borrowedBooks.contains(book)) {
             throw new IllegalArgumentException("Patron " + name + " (ID: " + patronId + ") has already borrowed book: " + book.getTitle());
@@ -85,7 +85,7 @@ public class ConcretePatron implements IPatron {
     @Override
     public void returnBook(IBook book) {
         if (book == null) {
-            throw new IllegalArgumentException("Cannot return a null book.");
+            throw new IllegalArgumentException("Can not return a null book.");
         }
         if (!borrowedBooks.contains(book)) {
             throw new IllegalArgumentException("Patron " + name + " (ID: " + patronId + ") did not borrow book: " + book.getTitle());

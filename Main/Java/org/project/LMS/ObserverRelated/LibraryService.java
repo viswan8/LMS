@@ -31,6 +31,4 @@ public class LibraryService {
         IPatron newPatron = patronFactory.createPatron(patronId, name, contactInfo);
         patronRepository.addPatron(newPatron);
     }
-
-    // Other methods that use lendingManager, etc.
 }

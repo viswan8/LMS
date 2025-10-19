@@ -8,19 +8,19 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList; // Thread-safe list for observers
 
-public class InMemoryBookRepository implements IBookRepository, ILibrarySubject { // Implement ILibrarySubject
+public class InMemoryBookRepository implements IBookRepository, ILibrarySubject {
     private final Map<String, IBook> books;
-    private final List<ILibraryObserver> observers; // List to hold observers
+    private final List<ILibraryObserver> observers;
 
     public InMemoryBookRepository() {
         this.books = new ConcurrentHashMap<>();
-        this.observers = new CopyOnWriteArrayList<>(); // Initialize observers list
+        this.observers = new CopyOnWriteArrayList<>();
     }
 
     @Override
     public void addObserver(ILibraryObserver observer) {
         if (observer == null) {
-            throw new IllegalArgumentException("Observer cannot be null.");
+            throw new IllegalArgumentException("Observer can not be null.");
         }
         observers.add(observer);
     }
@@ -40,7 +40,7 @@ public class InMemoryBookRepository implements IBookRepository, ILibrarySubject 
     @Override
     public void addBook(IBook book) {
         if (book == null) {
-            throw new IllegalArgumentException("Cannot add a null book.");
+            throw new IllegalArgumentException("Book can not be null");
         }
         if (books.containsKey(book.getISBN())) {
             Map<String, String> details = new HashMap<>();
@@ -102,18 +102,18 @@ public class InMemoryBookRepository implements IBookRepository, ILibrarySubject 
     @Override
     public void updateBook(IBook updatedBook) {
         if (updatedBook == null) {
-            throw new IllegalArgumentException("Cannot update with a null book object.");
+            throw new IllegalArgumentException("Can not update with a null book object.");
         }
         if (!books.containsKey(updatedBook.getISBN())) {
             Map<String, String> details = new HashMap<>();
             details.put("ISBN", updatedBook.getISBN());
             LibraryEvent errorEvent = new LibraryEvent(
                     LibraryEvent.EventType.ERROR,
-                    "Cannot update book. No book found with ISBN: " + updatedBook.getISBN(),
+                    "Can not update book. No book found with ISBN: " + updatedBook.getISBN(),
                     details
             );
             notifyObservers(errorEvent);
-            throw new IllegalArgumentException("Cannot update book. No book found with ISBN: " + updatedBook.getISBN());
+            throw new IllegalArgumentException("Can not update book. No book found with ISBN: " + updatedBook.getISBN());
         }
         books.put(updatedBook.getISBN(), updatedBook); // Replace the old object with the updated one
         // Notify observers about the book update
@@ -164,7 +164,7 @@ public class InMemoryBookRepository implements IBookRepository, ILibrarySubject 
                     break;
             }
         }
-        // Notify observers about the search operation (optional, could be verbose)
+        // Notify observers about the search operation
         Map<String, String> details = new HashMap<>();
         details.put("Query", query);
         details.put("SearchType", searchBy.name());

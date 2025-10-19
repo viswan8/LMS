@@ -22,10 +22,10 @@ public class LibraryLendingManager implements ILendingManager, ILibrarySubject {
 
     public LibraryLendingManager(IBookRepository bookRepository, IPatronRepository patronRepository) {
         if (bookRepository == null) {
-            throw new IllegalArgumentException("Book repository cannot be null.");
+            throw new IllegalArgumentException("Book repository can not be null.");
         }
         if (patronRepository == null) {
-            throw new IllegalArgumentException("Patron repository cannot be null.");
+            throw new IllegalArgumentException("Patron repository can not be null.");
         }
         this.bookRepository = bookRepository;
         this.patronRepository = patronRepository;
@@ -35,7 +35,7 @@ public class LibraryLendingManager implements ILendingManager, ILibrarySubject {
     @Override
     public void addObserver(ILibraryObserver observer) {
         if (observer == null) {
-            throw new IllegalArgumentException("Observer cannot be null.");
+            throw new IllegalArgumentException("Observer can not be null.");
         }
         observers.add(observer);
     }
@@ -55,10 +55,10 @@ public class LibraryLendingManager implements ILendingManager, ILibrarySubject {
     @Override
     public boolean checkoutBook(String bookISBN, String patronId) {
         if (bookISBN == null || bookISBN.trim().isEmpty()) {
-            throw new IllegalArgumentException("Book ISBN cannot be null or empty for checkout.");
+            throw new IllegalArgumentException("Book ISBN can not be null or empty for checkout.");
         }
         if (patronId == null || patronId.trim().isEmpty()) {
-            throw new IllegalArgumentException("Patron ID cannot be null or empty for checkout.");
+            throw new IllegalArgumentException("Patron ID can not be null or empty for checkout.");
         }
 
         IBook book = bookRepository.getBookByISBN(bookISBN);
@@ -152,10 +152,10 @@ public class LibraryLendingManager implements ILendingManager, ILibrarySubject {
     @Override
     public boolean returnBook(String bookISBN, String patronId) {
         if (bookISBN == null || bookISBN.trim().isEmpty()) {
-            throw new IllegalArgumentException("Book ISBN cannot be null or empty for return.");
+            throw new IllegalArgumentException("Book ISBN can not be null or empty for return.");
         }
         if (patronId == null || patronId.trim().isEmpty()) {
-            throw new IllegalArgumentException("Patron ID cannot be null or empty for return.");
+            throw new IllegalArgumentException("Patron ID can not be null or empty for return.");
         }
 
         IBook book = bookRepository.getBookByISBN(bookISBN);

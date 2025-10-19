@@ -7,7 +7,7 @@ package Main.Java.org.project.LMS.BookRelated;
 public class ConcreteBook implements IBook {
     private String title;
     private String author;
-    private String ISBN; // Unique identifier
+    private String ISBN; // Unique identification Id
     private int publicationYear;
     private BookStatus isAvailable;
     private BookStatus status;
@@ -22,7 +22,7 @@ public class ConcreteBook implements IBook {
      * @param publicationYear The year the book was published.
      */
     public ConcreteBook(String title, String author, String ISBN, int publicationYear) {
-        // Basic validation for critical fields
+        // Validation for critical fields
         if (title == null || title.trim().isEmpty()) {
             throw new IllegalArgumentException("Book title cannot be null or empty.");
         }
@@ -40,7 +40,7 @@ public class ConcreteBook implements IBook {
         this.author = author;
         this.ISBN = ISBN;
         this.publicationYear = publicationYear;
-        this.status = BookStatus.AVAILABLE; // When a book object created book is available by default
+        this.status = BookStatus.AVAILABLE; //by default
     }
 
     @Override
